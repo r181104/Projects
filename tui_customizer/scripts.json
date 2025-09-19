@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Update System Packages",
+    "icon": "🚀",
+    "description": "Runs 'apt update' and 'apt upgrade'. Requires sudo.",
+    "script_path": "scripts/system_update.sh",
+    "category": "System Maintenance"
+  },
+  {
+    "name": "Clean Package Cache",
+    "icon": "🧹",
+    "description": "Cleans the local cache of downloaded package files ('apt clean').",
+    "script_path": "scripts/clean_cache.sh",
+    "category": "System Maintenance"
+  },
+  {
+    "name": "List Installed Packages",
+    "icon": "📦",
+    "description": "Shows a scrollable list of all installed apt packages.",
+    "script_path": "scripts/list_installed.sh",
+    "category": "System Info"
+  },
+  {
+    "name": "Show System Info (Nerd Font)",
+    "icon": "",
+    "description": "Uses 'neofetch' to display system information beautifully.",
+    "script_path": "scripts/neofetch.sh",
+    "category": "System Info"
+  }
+]
