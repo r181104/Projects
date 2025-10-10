@@ -1,10 +1,12 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 import asyncio
 from typing import List
 
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
 app = FastAPI()
+
 
 class ConnectionManager:
     def __init__(self):
@@ -21,7 +23,9 @@ class ConnectionManager:
         for connection in self.active_connections:
             await connection.send_text(message)
 
+
 manager = ConnectionManager()
+
 
 @app.websocket("/ws/{client_id}")
 async def websocket_endpoint(websocket: WebSocket, client_id: str):
@@ -35,8 +39,10 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
         manager.disconnect(websocket)
         await manager.broadcast(f"User-{client_id} left the chat")
 
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 @app.get("/")
 async def read_index():
-    return FileResponse('static/index.html')
+    return FileResponse("static/index.html")
